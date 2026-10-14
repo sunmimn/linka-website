@@ -1,0 +1,161 @@
+/* 공용 팝업 (components/popup.js) — 약관 · 제휴 문의. 브라우저 기본 <dialog> 사용 */
+.popup {
+  width: min(720px, calc(100% - 32px));
+  max-height: min(80vh, 800px);
+  padding: 0;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-surface);
+  color: var(--color-text);
+  display: none;
+  flex-direction: column;
+}
+
+.popup[open] {
+  display: flex;
+}
+
+.popup::backdrop {
+  background: rgb(0 0 0 / 0.6);
+  backdrop-filter: blur(4px);
+}
+
+.popup-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.popup-header h2 {
+  font-size: 18px;
+}
+
+.popup-close {
+  background: none;
+  border: 0;
+  color: var(--color-text-muted);
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 4px 8px;
+}
+
+.popup-body {
+  padding: 24px;
+  overflow-y: auto;
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--color-text-muted);
+}
+
+.popup-body h3 {
+  color: var(--color-text);
+  font-size: 15px;
+  margin: 24px 0 8px;
+}
+
+.popup-body h3:first-child {
+  margin-top: 0;
+}
+
+.popup-body p + p {
+  margin-top: 8px;
+}
+
+.popup-empty {
+  text-align: center;
+  padding: 40px 0;
+}
+
+/* 팝업 열렸을 때 뒤 페이지 스크롤 막기 */
+body.is-modal-open {
+  overflow: hidden;
+}
+
+/* 제휴 문의 연락처 (content/partnership.js) */
+.contact-list {
+  list-style: none;
+  margin: 24px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 12px;
+}
+
+.contact-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding: 16px 18px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-bg);
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-label {
+  font-size: 12px;
+  color: var(--color-text-muted);
+}
+
+.contact-value {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.contact-actions {
+  display: flex;
+  gap: 8px;
+}
+
+/* ── 약관 본문 요소 (content/legal/*.html) ── */
+.popup-body ol,
+.popup-body ul {
+  padding-left: 20px;
+  margin: 8px 0;
+}
+
+.popup-body li + li {
+  margin-top: 4px;
+}
+
+.popup-body table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 12px 0;
+  font-size: 13px;
+}
+
+.popup-body th,
+.popup-body td {
+  border: 1px solid var(--color-border);
+  padding: 8px 10px;
+  text-align: left;
+  vertical-align: top;
+}
+
+.popup-body th {
+  color: var(--color-text);
+  background: var(--color-bg);
+}
+
+.legal-meta {
+  margin-bottom: 16px;
+  font-size: 13px;
+}
+
+/* 아직 정해지지 않은 부분 표시. ⚠️ 배포 전 약관에서 모두 없애야 함 */
+.todo {
+  background: #fff3a3;
+  color: #3a3000;
+  padding: 0 4px;
+  border-radius: 3px;
+}

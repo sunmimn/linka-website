@@ -1,0 +1,418 @@
+/**
+ * 메인(회사 소개) 페이지 섹션들
+ * 핵심 가치 · 로드맵 · 연혁 · 대표 한마디 · 팀 · 파트너 · 회사 개요 · 오시는 길 · 준비 중 안내 박스
+ */
+/* ── 핵심 가치 (#values) ── */
+.value-grid {
+  margin-top: 56px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.value-en {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--color-accent-text);
+  margin-bottom: 8px;
+}
+
+.value-grid h3 {
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+.value-grid p:last-child {
+  color: var(--color-text-muted);
+  font-size: 15px;
+}
+
+/* ── 회사 개요 표 (#overview) ── */
+.overview {
+  margin: 0;
+  border-top: 1px solid var(--color-border);
+}
+
+.overview > div {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 16px;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.overview dt {
+  color: var(--color-text-muted);
+}
+
+.overview dd {
+  margin: 0;
+}
+
+@media (max-width: 900px) {
+  .value-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── 섹션 제목 아래 내용 자리 공통 여백 ── */
+[data-slot] {
+  margin-top: 48px;
+}
+
+/* ── 준비 중 안내 박스 (개발 화면에서만 보임, components/company/fillSection.js) ── */
+.placeholder {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 40px 24px;
+  border: 1px dashed var(--color-border);
+  border-radius: var(--radius);
+  text-align: center;
+  color: var(--color-text-muted);
+  font-size: 14px;
+}
+
+.placeholder strong {
+  color: var(--color-text);
+  font-size: 16px;
+}
+
+.placeholder code {
+  color: var(--color-primary-text);
+}
+
+.placeholder small {
+  opacity: 0.7;
+}
+
+/* ── 대표 한마디 (팀 섹션 안, components/company/founder.js) ── */
+.founder-quote {
+  margin: 48px 0 0;
+  padding: 36px 40px;
+  border-left: 3px solid var(--color-accent);
+  background: var(--color-surface);
+  border-radius: 0 var(--radius) var(--radius) 0;
+}
+
+.founder-quote blockquote {
+  margin: 0;
+  font-size: clamp(17px, 2vw, 21px);
+  font-weight: 600;
+  line-height: 1.7;
+  max-width: 860px;
+}
+
+.founder-quote figcaption {
+  margin-top: 20px;
+  color: var(--color-text-muted);
+  font-size: 15px;
+}
+
+/* 한마디 다음에 오는 팀 카드와 간격 */
+.founder-quote + [data-slot] {
+  margin-top: 24px;
+}
+
+/* ── 연혁 (#history) ── */
+.history-year {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 24px;
+  padding: 28px 0;
+  border-top: 1px solid var(--color-border);
+}
+
+.history-year-label {
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--color-accent-text);
+}
+
+.history-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 16px;
+}
+
+.history-list li {
+  display: flex;
+  gap: 20px;
+}
+
+.history-month {
+  color: var(--color-text-muted);
+  font-weight: 600;
+  min-width: 28px;
+}
+
+.history-title {
+  font-weight: 600;
+}
+
+.history-desc {
+  margin-top: 4px;
+  color: var(--color-text-muted);
+  font-size: 15px;
+}
+
+/* ── 팀 소개 (#team) ── */
+.team-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.team-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 28px 22px;
+}
+
+.team-name {
+  font-weight: 700;
+  font-size: 19px;
+}
+
+.team-role {
+  color: var(--color-primary-text);
+  font-size: 14px;
+  font-weight: 600;
+  margin-top: 2px;
+}
+
+/* 경희대학교 ○○학과 */
+.team-major {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--color-border);
+  font-size: 12px;
+  color: var(--color-text-muted);
+}
+
+.team-highlights {
+  margin: 16px 0 0;
+  padding: 16px 0 0;
+  border-top: 1px solid var(--color-border);
+  list-style: none;
+  display: grid;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--color-text-muted);
+}
+
+.team-highlights li {
+  position: relative;
+  padding-left: 12px;
+}
+
+.team-highlights li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.7em;
+  width: 4px;
+  height: 4px;
+  border-radius: 999px;
+  background: var(--color-text-muted);
+}
+
+@media (max-width: 1000px) {
+  .team-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .team-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── 로드맵 (#roadmap) ── 단계 카드를 가로로, 위쪽 선으로 연결 */
+.roadmap {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+}
+
+.roadmap-stage {
+  position: relative;
+  padding-top: 32px;
+}
+
+/* 단계를 잇는 가로선 */
+.roadmap-stage::before {
+  content: '';
+  position: absolute;
+  top: 7px;
+  left: 0;
+  right: -16px;
+  height: 2px;
+  background: var(--color-border);
+}
+
+.roadmap-stage:last-child::before {
+  right: 0;
+}
+
+.roadmap-dot {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 16px;
+  height: 16px;
+  border-radius: 999px;
+  background: var(--color-bg);
+  border: 2px solid var(--color-border);
+}
+
+.roadmap-stage.is-current .roadmap-dot {
+  border-color: var(--color-accent);
+  background: var(--color-accent);
+  box-shadow: 0 0 0 5px color-mix(in srgb, var(--color-accent) 25%, transparent);
+}
+
+.roadmap-stage.is-done .roadmap-dot {
+  border-color: var(--color-primary);
+  background: var(--color-primary);
+}
+
+.roadmap-period {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--color-text-muted);
+}
+
+.roadmap-status {
+  display: inline-block;
+  margin-top: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 999px;
+  border: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+}
+
+.roadmap-stage.is-current .roadmap-status {
+  border-color: var(--color-accent);
+  color: var(--color-accent-text);
+}
+
+.roadmap-title {
+  margin-top: 10px;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.roadmap-items {
+  margin: 12px 0 0;
+  padding-left: 18px;
+  color: var(--color-text-muted);
+  font-size: 15px;
+  display: grid;
+  gap: 6px;
+}
+
+/* ── 파트너 (#partners) ── */
+.partner-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 12px;
+}
+
+.partner {
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  text-decoration: none;
+  font-weight: 700;
+  transition: border-color 0.2s;
+}
+
+a.partner:hover {
+  border-color: var(--color-text-muted);
+}
+
+.partner img {
+  max-height: 40px;
+  max-width: 70%;
+  object-fit: contain;
+}
+
+.partner small {
+  color: var(--color-text-muted);
+  font-weight: 400;
+  font-size: 12px;
+}
+
+/* ── 오시는 길 (#location) ── */
+.location-address {
+  font-size: clamp(18px, 2.4vw, 24px);
+  font-weight: 700;
+}
+
+.location-directions {
+  margin: 16px 0 0;
+  padding-left: 18px;
+  color: var(--color-text-muted);
+}
+
+.location-contact {
+  margin: 20px 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 32px;
+}
+
+.location-contact div {
+  display: flex;
+  gap: 10px;
+}
+
+.location-contact dt {
+  color: var(--color-text-muted);
+}
+
+.location-contact dd {
+  margin: 0;
+}
+
+.location-actions {
+  margin-top: 28px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+@media (max-width: 720px) {
+  .founder-quote {
+    padding: 24px 20px;
+  }
+  .history-year {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}

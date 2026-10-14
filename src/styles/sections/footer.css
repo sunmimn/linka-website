@@ -1,0 +1,89 @@
+/* 푸터 (layout/footer.js). 왼쪽 로고 + 오른쪽 약관 링크 · 사업자 정보 */
+.site-footer {
+  position: relative;
+  border-top: 1px solid var(--color-border);
+  padding: 48px 0 56px;
+  font-size: 13px;
+  line-height: 1.8;
+  color: var(--color-text-muted);
+}
+
+/* 푸터 맨 위 브랜드 그라데이션 선 (파랑 → 빨강) */
+.site-footer::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: 0;
+  width: 120px;
+  height: 2px;
+  background: var(--gradient-brand);
+}
+
+.footer-inner {
+  display: flex;
+  gap: 48px;
+  align-items: flex-start;
+}
+
+.footer-logo img {
+  height: 19px;
+  width: auto;
+  margin-top: 4px;
+}
+
+/* 항목 사이 구분선 | */
+.site-footer i {
+  font-style: normal;
+  margin: 0 10px;
+  opacity: 0.35;
+}
+
+.footer-legal {
+  margin-bottom: 10px;
+}
+
+/* 약관 링크는 <button> (팝업을 여는 동작이라 링크가 아닌 버튼) */
+.footer-legal button {
+  background: none;
+  border: 0;
+  padding: 0;
+  font: inherit;
+  color: var(--color-text);
+  cursor: pointer;
+}
+
+.footer-legal button:hover {
+  text-decoration: underline;
+}
+
+.footer-legal button[data-popup='privacy'] {
+  font-weight: 700; /* 개인정보처리방침은 굵게 표시하는 것이 관례 */
+}
+
+.footer-info p {
+  margin: 0;
+}
+
+/* 항목 이름(상호, 대표 …) */
+.footer-info em {
+  font-style: normal;
+  opacity: 0.7;
+}
+
+.footer-notice {
+  margin-top: 8px;
+}
+
+.footer-copy {
+  margin-top: 8px;
+  font-size: 12px;
+  letter-spacing: 0.02em;
+  opacity: 0.7;
+}
+
+@media (max-width: 720px) {
+  .footer-inner {
+    flex-direction: column;
+    gap: 24px;
+  }
+}

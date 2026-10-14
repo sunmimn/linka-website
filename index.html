@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>링카모빌리티 | Linka Mobility</title>
+    <meta
+      name="description"
+      content="링카모빌리티는 이동과 차량 관리 과정에서 흩어져 있는 사람과 정보를 하나로 연결하는 모빌리티 플랫폼 기업입니다."
+    />
+    <link rel="canonical" href="https://www.linkamobility.com/" />
+
+    <!-- 공유 미리보기 (카카오톡 · 페이스북 등) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="링카모빌리티" />
+    <meta property="og:title" content="링카모빌리티 | Linka Mobility" />
+    <meta property="og:description" content="흩어진 과정을 하나로 잇는 모빌리티 플랫폼, 링카모빌리티" />
+    <meta property="og:image" content="https://www.linkamobility.com/brand/og-image.png" />
+    <meta property="og:url" content="https://www.linkamobility.com/" />
+
+    <!-- 아이콘 · 공유 미리보기 이미지: public/ , public/brand/ -->
+    <link rel="icon" href="/favicon.png" type="image/png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta name="theme-color" content="#0b0e14" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css"
+    />
+  </head>
+
+  <!-- 메인 = 회사 소개 페이지. 차바다 소개는 chabada/index.html -->
+  <body data-page="home">
+    <!-- 공통 헤더 (src/layout/header.js) -->
+    <div data-site-header></div>
+
+    <main id="top">
+      <!-- ═══════════════ 1. 첫 화면 (3D) ═══════════════ -->
+      <section class="hero">
+        <canvas class="hero-canvas" aria-hidden="true"></canvas>
+        <div class="container hero-content">
+          <p class="section-eyebrow">LINKA MOBILITY</p>
+          <h1 class="hero-title">
+            흩어진 과정을<br />
+            <span class="text-gradient">하나로</span> 잇습니다.
+          </h1>
+          <p class="hero-desc">
+            링카모빌리티는 이동과 차량 관리 과정에서 흩어져 있는 사람과 정보를 하나로 연결하는 모빌리티
+            플랫폼 기업입니다.
+          </p>
+          <div class="hero-actions">
+            <a href="#about" class="btn btn--primary">회사 소개</a>
+            <button type="button" class="btn" data-popup="partnership">제휴 문의</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════════ 2. 회사 소개 ═══════════════ -->
+      <section id="about" class="section">
+        <div class="container about">
+          <div>
+            <p class="section-eyebrow reveal">ABOUT US</p>
+            <h2 class="section-title reveal">연결(Link)로<br />이동의 불편을 줄입니다</h2>
+          </div>
+          <div class="about-body reveal">
+            <p>
+              차량과 관련된 일에는 많은 사람이 얽혀 있습니다. 하지만 서로가 가진 정보는 흩어져 있어서,
+              진행 상황 하나를 알기 위해서도 여러 번 연락하고 기다려야 합니다.
+            </p>
+            <p>
+              링카모빌리티는 이 흩어진 사람과 정보를 하나의 플랫폼 위에 연결합니다. 각자가 한 일이
+              모두에게 실시간으로 공유되는 구조를 만들어, 불필요한 연락과 기다림을 줄이는 것이 저희의
+              목표입니다.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════════ 3. 핵심 가치 ═══════════════ -->
+      <section id="values" class="section">
+        <div class="container">
+          <p class="section-eyebrow reveal">OUR VALUES</p>
+          <h2 class="section-title reveal">저희가 일하는 방식</h2>
+
+          <div class="value-grid">
+            <article class="card reveal">
+              <p class="value-en">Link</p>
+              <h3>연결</h3>
+              <p>따로 움직이던 사람과 과정을 하나의 흐름으로 잇습니다.</p>
+            </article>
+            <article class="card reveal">
+              <p class="value-en">Transparency</p>
+              <h3>투명함</h3>
+              <p>모두가 같은 정보를 같은 시점에 확인할 수 있게 합니다.</p>
+            </article>
+            <article class="card reveal">
+              <p class="value-en">Real-time</p>
+              <h3>실시간</h3>
+              <p>묻고 기다리지 않아도, 지금 일어나는 일을 바로 알 수 있게 합니다.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════════ 4. 로드맵 ═══════════════
+           내용: src/content/company/roadmap.js → components/company/roadmap.js (비어 있으면 배포 시 숨김)
+           ※ 실적이 쌓이면 이 섹션을 지우고 아래 주석 처리된 "연혁" 섹션의 주석을 풀면 됩니다. -->
+      <section id="roadmap" class="section" data-section="roadmap">
+        <div class="container">
+          <p class="section-eyebrow reveal">ROADMAP</p>
+          <h2 class="section-title reveal">앞으로의 목표</h2>
+          <div class="reveal" data-slot></div>
+        </div>
+      </section>
+
+      <!-- ═══════════════ (보관) 연혁 ═══════════════
+           지금은 로드맵으로 대체. 전환할 때: 이 블록의 첫 줄과 마지막 줄(주석 열고 닫는 줄)만 지우면 됨
+           내용: src/content/company/history.js
+      <section id="history" class="section" data-section="history">
+        <div class="container">
+          <p class="section-eyebrow reveal">HISTORY</p>
+          <h2 class="section-title reveal">연혁</h2>
+          <div class="history reveal" data-slot></div>
+        </div>
+      </section>
+      -->
+
+      <!-- ═══════════════ 5. 팀 소개 ═══════════════
+           내용: src/content/company/team.js → components/company/team.js (비어 있으면 배포 시 숨김) -->
+      <section id="team" class="section" data-section="team">
+        <div class="container">
+          <p class="section-eyebrow reveal">TEAM</p>
+          <h2 class="section-title reveal">경희대학교에서 시작한 팀</h2>
+          <p class="section-desc reveal">
+            사고 이후의 복잡한 업무를 현장에서 직접 겪은 대표와, 같은 학교에서 각자의 전공을 쌓아온
+            개발 · 마케팅 팀원이 함께 문제를 풀고 있습니다.
+          </p>
+          <!-- 대표 한마디 (내용: src/content/company/founder.js · 비어 있으면 자동으로 빠짐) -->
+          <figure class="founder-quote reveal" data-founder-quote></figure>
+          <div class="section-slot" data-slot></div>
+        </div>
+      </section>
+
+      <!-- ═══════════════ 6. 파트너 · 협력사 ═══════════════
+           내용: src/content/company/partners.js → components/company/partners.js (비어 있으면 배포 시 숨김) -->
+      <section id="partners" class="section" data-section="partners">
+        <div class="container">
+          <p class="section-eyebrow reveal">PARTNERS</p>
+          <h2 class="section-title reveal">함께하는 파트너</h2>
+          <div class="section-slot" data-slot></div>
+        </div>
+      </section>
+
+      <!-- ═══════════════ 7. 회사 개요 ═══════════════
+           값은 src/config/company.js → components/company/overview.js 가 채움 (빈 값은 숨김) -->
+      <section id="overview" class="section">
+        <div class="container about">
+          <div>
+            <p class="section-eyebrow reveal">COMPANY</p>
+            <h2 class="section-title reveal">회사 개요</h2>
+          </div>
+          <dl class="overview reveal" data-company-overview></dl>
+        </div>
+      </section>
+      <!-- ═══════════════ 8. 오시는 길 ═══════════════
+           내용: src/config/company.js 의 address 등 → components/company/location.js (주소 비어 있으면 배포 시 숨김) -->
+      <section id="location" class="section" data-section="location">
+        <div class="container">
+          <p class="section-eyebrow reveal">LOCATION</p>
+          <h2 class="section-title reveal">오시는 길</h2>
+          <div class="location reveal" data-slot></div>
+        </div>
+      </section>
+    </main>
+
+    <!-- 공통 푸터 (src/layout/footer.js) -->
+    <div data-site-footer></div>
+
+    <script type="module" src="/src/pages/home.js"></script>
+  </body>
+</html>

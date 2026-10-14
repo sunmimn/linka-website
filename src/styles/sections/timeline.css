@@ -1,0 +1,478 @@
+/**
+ * "실시간 공유 타임라인" 섹션 (components/timeline/)
+ * 구조: .timeline(길게) > .timeline-sticky(화면 고정) > 설명 + .tl-stage(앱 3개)
+ */
+.timeline {
+  position: relative;
+  /* 장면 1개당 화면 높이 0.9배만큼 스크롤 (값은 timeline/index.js 가 넣어줌) */
+  height: calc(var(--scene-count, 6) * 90vh + 100vh);
+}
+
+.timeline-sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  height: 100svh;
+  display: flex;
+  align-items: center;
+  padding-top: var(--header-h);
+  overflow: hidden;
+}
+
+.tl-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 24px;
+  margin-bottom: 28px;
+}
+
+.tl-caption-title {
+  font-size: clamp(22px, 3vw, 32px);
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.tl-caption-desc {
+  margin-top: 8px;
+  color: var(--color-text-muted);
+  max-width: 560px;
+  min-height: 3.2em; /* 문구 길이가 달라도 아래 화면이 덜컹거리지 않게 */
+}
+
+/* 진행 점 */
+.tl-dots {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.tl-dots button {
+  width: 8px;
+  height: 8px;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: var(--color-border);
+  cursor: pointer;
+  transition: width 0.3s, background 0.3s;
+}
+
+.tl-dots button.is-active {
+  width: 24px;
+  background: var(--gradient-brand);
+}
+
+/* ── 앱 3개가 놓이는 무대 ── */
+.tl-stage {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
+  gap: 16px;
+}
+
+.tl-device {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  max-width: 240px;
+  transition: opacity 0.4s;
+}
+
+.tl-device-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-text-muted);
+}
+
+/* 행동한 앱이 아닌 협력사 앱은 살짝 흐리게 */
+.tl-stage[data-actor='driver'] .tl-device--shop,
+.tl-stage[data-actor='shop'] .tl-device--driver,
+.tl-stage[data-actor='customer'] .tl-device--driver,
+.tl-stage[data-actor='customer'] .tl-device--shop {
+  opacity: 0.35;
+}
+
+/* ── 휴대폰 틀 ── */
+.phone {
+  width: 100%;
+  height: min(440px, 52vh);
+  border: 1px solid var(--color-border);
+  border-radius: 28px;
+  background: var(--color-surface);
+  padding: 18px 14px;
+  font-size: 12px;
+  line-height: 1.45;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.tl-device--customer .phone {
+  border-color: var(--color-primary);
+}
+
+.phone-card {
+  border: 1px solid var(--color-border);
+  border-radius: 14px;
+  padding: 12px;
+  animation: tl-pop 0.45s ease;
+}
+
+.phone-card--highlight {
+  border-color: var(--color-accent);
+}
+
+.phone-action {
+  margin-top: auto;
+  width: 100%;
+  padding: 11px;
+  border: 0;
+  border-radius: 12px;
+  font: inherit;
+  font-weight: 700;
+  background: var(--color-border);
+  color: var(--color-text);
+  pointer-events: none;
+}
+
+/* 버튼이 "눌리는" 연출 */
+.phone-action.is-pressed {
+  background: var(--color-primary);
+  color: #fff;
+  animation: tl-press 0.6s ease 0.1s;
+}
+
+/* ── 앱 화면 안 요소들 (pc- = phone content) ── */
+.pc-status {
+  align-self: flex-start;
+  font-size: 11px;
+  padding: 3px 8px;
+  border-radius: 999px;
+  border: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+}
+
+.pc-badge {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 999px;
+  background: var(--color-accent);
+  color: var(--color-bg);
+  margin-bottom: 6px;
+}
+
+.pc-title {
+  font-weight: 700;
+  font-size: 1.1em;
+}
+
+.pc-sub {
+  color: var(--color-text-muted);
+  margin-top: 2px;
+}
+
+.pc-right {
+  text-align: right;
+}
+
+.pc-checks,
+.pc-lines {
+  list-style: none;
+  padding: 0;
+  margin: 8px 0 0;
+  display: grid;
+  gap: 6px;
+}
+
+.pc-check {
+  color: var(--color-accent-text);
+  margin-right: 6px;
+  font-weight: 700;
+}
+
+.pc-lines li {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.pc-lines span {
+  color: var(--color-text-muted);
+}
+
+.pc-map {
+  position: relative;
+  margin-top: 10px;
+  height: 80px;
+  border-radius: 10px;
+  background: var(--color-bg);
+  overflow: hidden;
+}
+
+.pc-map svg {
+  width: 100%;
+  height: 100%;
+}
+
+.pc-route {
+  fill: none;
+  stroke: var(--color-primary);
+  stroke-width: 3;
+  stroke-dasharray: 6 5;
+}
+
+.pc-map-car,
+.pc-map-home {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+}
+
+.pc-map-home {
+  right: 5%;
+  top: 12%;
+  border: 2px solid var(--color-text);
+}
+
+.pc-map-car {
+  background: var(--color-accent);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--color-accent) 30%, transparent);
+  animation: tl-drive 3s ease-in-out infinite alternate;
+}
+
+.pc-photos {
+  margin-top: 10px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+}
+
+.pc-photos span {
+  aspect-ratio: 1;
+  border-radius: 8px;
+  background: var(--color-border);
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding: 4px;
+  font-size: 10px;
+  color: var(--color-text-muted);
+}
+
+.pc-bar {
+  margin-top: 10px;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--color-border);
+  overflow: hidden;
+}
+
+.pc-bar span {
+  display: block;
+  height: 100%;
+  background: var(--color-accent);
+  animation: tl-grow 0.8s ease;
+}
+
+.pc-options {
+  margin-top: 10px;
+  display: grid;
+  gap: 6px;
+}
+
+.pc-options span {
+  padding: 8px;
+  border-radius: 10px;
+  border: 1px solid var(--color-border);
+  text-align: center;
+}
+
+.pc-options .is-selected {
+  border-color: var(--color-accent);
+}
+
+/* 고객 앱 타임라인 목록 (pt- = phone timeline) */
+.pt-heading {
+  font-weight: 700;
+  margin-top: 4px;
+}
+
+.pt-steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+  color: var(--color-text-muted);
+}
+
+.pt-steps li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pt-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 999px;
+  border: 2px solid var(--color-border);
+  flex-shrink: 0;
+}
+
+.pt-steps .is-done .pt-dot {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.pt-steps .is-current {
+  color: var(--color-text);
+  font-weight: 700;
+}
+
+.pt-steps .is-current .pt-dot {
+  border-color: var(--color-accent);
+  background: var(--color-accent);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--color-accent) 30%, transparent);
+}
+
+/* ── 신호: 행동한 앱 → 고객 앱으로 날아가는 빛 ── */
+.tl-signal {
+  position: absolute;
+  top: 45%;
+  width: 14px;
+  height: 14px;
+  margin-left: -7px;
+  border-radius: 999px;
+  background: var(--color-accent);
+  box-shadow: 0 0 24px 6px color-mix(in srgb, var(--color-accent) 60%, transparent);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.tl-stage.is-sending[data-actor='driver'] .tl-signal {
+  animation: tl-signal-from-left 0.9s ease-in-out;
+}
+
+.tl-stage.is-sending[data-actor='shop'] .tl-signal {
+  animation: tl-signal-from-right 0.9s ease-in-out;
+}
+
+/* 신호가 도착하는 순간 고객 앱이 반짝 */
+.tl-stage.is-sending .tl-device--customer .phone {
+  animation: tl-receive 0.5s ease 0.8s;
+}
+
+.tl-note {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 12px;
+  color: var(--color-text-muted);
+}
+
+/* ── 애니메이션 정의 ── */
+@keyframes tl-pop {
+  from { opacity: 0; transform: translateY(8px); }
+}
+
+@keyframes tl-press {
+  40% { transform: scale(0.94); }
+}
+
+@keyframes tl-grow {
+  from { width: 0; }
+}
+
+@keyframes tl-drive {
+  from { left: 4%; top: 72%; }
+  to { left: 55%; top: 30%; }
+}
+
+@keyframes tl-signal-from-left {
+  0% { left: 16.6%; opacity: 0; }
+  15% { opacity: 1; }
+  85% { opacity: 1; }
+  100% { left: 50%; opacity: 0; }
+}
+
+@keyframes tl-signal-from-right {
+  0% { left: 83.3%; opacity: 0; }
+  15% { opacity: 1; }
+  85% { opacity: 1; }
+  100% { left: 50%; opacity: 0; }
+}
+
+@keyframes tl-receive {
+  50% { box-shadow: 0 0 0 6px color-mix(in srgb, var(--color-accent) 35%, transparent); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .timeline *,
+  .timeline *::before {
+    animation: none !important;
+  }
+}
+
+/* ── 좁은 화면: 행동한 앱 + 고객 앱 2개만 보여줌 ── */
+@media (max-width: 760px) {
+  .tl-head {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 20px;
+  }
+
+  .tl-caption-desc {
+    font-size: 14px;
+    min-height: 4.8em;
+  }
+
+  .tl-stage {
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .tl-device--driver,
+  .tl-device--shop {
+    display: none;
+  }
+
+  /* 행동한 협력사 앱을 왼쪽에 */
+  .tl-stage[data-actor='driver'] .tl-device--driver,
+  .tl-stage[data-actor='shop'] .tl-device--shop {
+    display: flex;
+    opacity: 1;
+    order: -1;
+  }
+
+  /* 고객이 행동한 장면이면 고객 앱만 가운데 */
+  .tl-stage[data-actor='customer'] {
+    grid-template-columns: minmax(0, 220px);
+    justify-content: center;
+  }
+
+  .phone {
+    height: min(380px, 50vh);
+    font-size: 10.5px;
+    border-radius: 22px;
+    padding: 14px 10px;
+  }
+
+  .tl-stage.is-sending[data-actor] .tl-signal {
+    animation-name: tl-signal-mobile;
+  }
+
+  @keyframes tl-signal-mobile {
+    0% { left: 25%; opacity: 0; }
+    15% { opacity: 1; }
+    85% { opacity: 1; }
+    100% { left: 75%; opacity: 0; }
+  }
+}

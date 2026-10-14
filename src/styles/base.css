@@ -1,0 +1,168 @@
+/* 기본 리셋 + 공통 레이아웃 도우미. 섹션별 스타일은 styles/sections/ 에 있습니다. */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--header-h);
+}
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  word-break: keep-all;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+.section {
+  padding: 120px 0;
+}
+
+.section-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--color-primary-text);
+  margin-bottom: 12px;
+}
+
+/* 로고의 파랑·빨강 화살표(»)를 작게 붙인 브랜드 표식 */
+.section-eyebrow::before {
+  content: '';
+  width: 20px;
+  height: 12px;
+  flex-shrink: 0;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 12'%3E%3Cpath d='M0 0h4l5 6-5 6H0l5-6z' fill='%230b4fe6'/%3E%3Cpath d='M9 0h4l5 6-5 6H9l5-6z' fill='%23e63a46'/%3E%3C/svg%3E")
+    no-repeat center / contain;
+}
+
+/* 가운데 정렬된 섹션에서도 표식이 가운데 오도록 */
+.launch .section-eyebrow {
+  justify-content: center;
+}
+
+/* 파랑 → 빨강 그라데이션 글자 */
+.text-gradient {
+  background: var(--gradient-brand);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+::selection {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+.section-title {
+  font-size: clamp(28px, 4vw, 44px);
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.section-desc {
+  margin-top: 16px;
+  color: var(--color-text-muted);
+  font-size: 17px;
+  max-width: 620px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 24px;
+  border-radius: 999px;
+  font-weight: 600;
+  text-decoration: none;
+  border: 1px solid var(--color-border);
+  background: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  transition: transform 0.2s, background 0.2s;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn--small {
+  padding: 8px 14px;
+  font-size: 13px;
+}
+
+.btn--primary {
+  background: var(--color-primary);
+  color: #fff;
+  border-color: transparent;
+}
+
+.btn--primary:hover {
+  background: #2a66ff;
+}
+
+.btn:not(.btn--primary):hover {
+  border-color: var(--color-text-muted);
+}
+
+/* 스크롤 등장 애니메이션 (components/reveal.js 가 .is-visible 을 붙임) */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+@media (max-width: 720px) {
+  .section {
+    padding: 80px 0;
+  }
+}

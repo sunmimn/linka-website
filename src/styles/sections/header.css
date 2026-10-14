@@ -1,0 +1,96 @@
+/* 상단 고정 헤더 (index.html 의 <header class="site-header">) */
+.site-header {
+  position: fixed;
+  inset: 0 0 auto;
+  height: var(--header-h);
+  z-index: 50;
+  transition: background 0.3s, border-color 0.3s;
+  border-bottom: 1px solid transparent;
+}
+
+/* 스크롤하면 layout/header.js 가 .is-scrolled 를 붙임 */
+.site-header.is-scrolled {
+  background: color-mix(in srgb, var(--color-bg) 85%, transparent);
+  backdrop-filter: blur(12px);
+  border-color: var(--color-border);
+}
+
+.site-header .container {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* 로고 (layout/header.js) */
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  height: 19px;
+  width: auto;
+}
+
+.nav {
+  display: flex;
+  gap: 32px;
+}
+
+.nav a {
+  text-decoration: none;
+  color: var(--color-text-muted);
+  font-size: 15px;
+  transition: color 0.2s;
+}
+
+.nav a:hover {
+  color: var(--color-text);
+}
+
+/* 현재 보고 있는 페이지 메뉴 */
+.nav a.is-active {
+  color: var(--color-text);
+  font-weight: 700;
+}
+
+@media (max-width: 720px) {
+  .nav {
+    gap: 16px;
+  }
+  .nav .hide-mobile {
+    display: none;
+  }
+}
+
+/* 오른쪽 위 "제휴 문의" 버튼 (모바일에서도 보임) */
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+@media (max-width: 720px) {
+  .header-right {
+    gap: 16px;
+  }
+}
+
+.header-cta {
+  padding: 8px 16px;
+  border-radius: 999px;
+  border: 1px solid var(--color-primary);
+  background: var(--color-primary);
+  color: #fff;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.header-cta:hover {
+  background: #2a66ff;
+  border-color: #2a66ff;
+}

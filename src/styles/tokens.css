@@ -1,0 +1,38 @@
+/**
+ * ─────────────────────────────────────────────────────────────
+ *  디자인 토큰 (색 · 글꼴 · 간격)
+ * ─────────────────────────────────────────────────────────────
+ *  사이트 전체 색은 여기서만 정합니다. 3D 장면(src/three/)도 이 값을 읽어 씁니다.
+ *  브랜드 색은 로고(public/brand/logo.png)에서 그대로 추출한 값입니다.
+ */
+:root {
+  /* ── 브랜드 색 (로고 원본) ──
+     면(버튼 · 점 · 선)에 쓰는 색입니다. */
+  --color-primary: #0b4fe6; /* LINKA 파랑 */
+  --color-accent: #e63a46; /* LINKA 빨강 */
+
+  /* ── 어두운 바탕 위 "글자"용 브랜드 색 ──
+     원본 파랑/빨강은 검은 바탕에서 글자로 쓰면 잘 안 읽혀서, 같은 색을 밝게 올린 버전 */
+  --color-primary-text: #5b8cff;
+  --color-accent-text: #ff6b75;
+
+  /* ── 브랜드 그라데이션 (파랑 → 빨강, 로고 화살표 순서) ── */
+  --gradient-brand: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+
+  /* ── 배경 · 표면 · 글자 (살짝 푸른 기가 도는 검정) ── */
+  --color-bg: #0b0e14;
+  --color-surface: #131824;
+  --color-border: #242b3b;
+  --color-text: #f3f5f9;
+  --color-text-muted: #98a1b3;
+
+  /* 글꼴 */
+  --font-sans: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont,
+    'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+
+  /* 레이아웃 */
+  --container: 1120px;
+  --gutter: 20px;
+  --header-h: 64px;
+  --radius: 14px;
+}

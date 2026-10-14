@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>차바다 | 링카모빌리티</title>
+    <meta
+      name="description"
+      content="차바다는 고객 · 탁송기사 · 공업사를 하나의 실시간 타임라인으로 잇는 사고대차 플랫폼입니다. 사고 이후의 모든 과정을 전화 없이 앱에서 확인하세요."
+    />
+    <link rel="canonical" href="https://www.linkamobility.com/chabada/" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="링카모빌리티" />
+    <meta property="og:title" content="차바다 | 사고 이후의 모든 과정, 전화 없이 실시간으로" />
+    <meta property="og:description" content="고객 · 탁송기사 · 공업사를 하나의 타임라인으로 잇는 사고대차 플랫폼" />
+    <meta property="og:image" content="https://www.linkamobility.com/brand/og-image.png" />
+    <meta property="og:url" content="https://www.linkamobility.com/chabada/" />
+
+    <link rel="icon" href="/favicon.png" type="image/png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta name="theme-color" content="#0b0e14" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css"
+    />
+  </head>
+
+  <!-- 차바다 서비스 소개 페이지 (주소: /chabada/). 회사 소개는 루트의 index.html -->
+  <body data-page="chabada">
+    <!-- 공통 헤더 (src/layout/header.js) -->
+    <div data-site-header></div>
+
+    <main id="top">
+      <!-- ═══════════════ 1. 차바다 첫 화면 ═══════════════ -->
+      <section class="hero hero--service">
+        <div class="container hero-content">
+          <p class="section-eyebrow">CHABADA · by Linka Mobility</p>
+          <h1 class="hero-title">
+            사고 이후의 모든 과정,<br />
+            <span class="text-gradient">전화 없이</span> 실시간으로.
+          </h1>
+          <p class="hero-desc">
+            차바다는 고객 · 탁송기사 · 공업사를 하나의 타임라인으로 잇는 사고대차 플랫폼입니다.
+          </p>
+          <div class="hero-actions">
+            <a href="#timeline" class="btn btn--primary">어떻게 연결되나요?</a>
+            <a href="#launch" class="btn">출시 소식</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════════ 2. 핵심 기능: 실시간 공유 타임라인 ═══════════════
+           스크롤하면 장면이 바뀝니다.
+           장면 내용: src/content/timelineScenes.js / 동작: src/components/timeline/      -->
+      <section id="timeline" class="timeline" data-timeline>
+        <div class="timeline-sticky">
+          <div class="container">
+            <p class="section-eyebrow">CORE · 실시간 공유 타임라인</p>
+            <div class="tl-head">
+              <div aria-live="polite">
+                <h2 class="tl-caption-title" data-timeline-title></h2>
+                <p class="tl-caption-desc" data-timeline-desc></p>
+              </div>
+              <div class="tl-dots" data-timeline-dots></div>
+            </div>
+
+            <div class="tl-stage" data-timeline-stage>
+              <div class="tl-device tl-device--driver">
+                <div class="phone" data-screen="driver"></div>
+                <span class="tl-device-label">탁송기사 앱</span>
+              </div>
+              <div class="tl-device tl-device--customer">
+                <div class="phone" data-screen="customer"></div>
+                <span class="tl-device-label">고객 앱</span>
+              </div>
+              <div class="tl-device tl-device--shop">
+                <div class="phone" data-screen="shop"></div>
+                <span class="tl-device-label">공업사 앱</span>
+              </div>
+              <span class="tl-signal" aria-hidden="true"></span>
+            </div>
+            <p class="tl-note">* 이해를 돕기 위한 예시 화면입니다.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════════ 3. 기존 방식 vs 차바다 ═══════════════ -->
+      <section id="compare" class="section">
+        <div class="container">
+          <p class="section-eyebrow reveal">WHY CHABADA</p>
+          <h2 class="section-title reveal">물어볼 필요가 없어집니다</h2>
+          <p class="section-desc reveal">
+            사고 처리 중 가장 답답한 건 "지금 어디까지 됐는지" 모른다는 것입니다. 차바다에서는 각자
+            앱에서 한 일이 고객 타임라인에 바로 기록됩니다.
+          </p>
+
+          <div class="compare">
+            <div class="card reveal">
+              <p class="compare-label">지금까지</p>
+              <ul class="compare-list">
+                <li>"기사님 언제 도착하세요?" <span>전화</span></li>
+                <li>"견적 얼마 나왔어요?" <span>전화</span></li>
+                <li>"수리 어디까지 됐어요?" <span>전화</span></li>
+                <li>"차는 언제 받을 수 있어요?" <span>전화</span></li>
+              </ul>
+            </div>
+            <div class="card card--ours reveal">
+              <p class="compare-label">차바다</p>
+              <ul class="compare-list">
+                <li>기사 도착 예정 시간 · 실시간 위치 <span>앱에서 바로</span></li>
+                <li>공업사가 입력한 수리 항목 · 견적 <span>앱에서 바로</span></li>
+                <li>작업 사진 · 수리 진행 상황 <span>앱에서 바로</span></li>
+                <li>수리 완료 알림 · 인도 방법 선택 <span>앱에서 바로</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════════ 4. 이용 방법 ═══════════════ -->
+      <section id="flow" class="section">
+        <div class="container">
+          <p class="section-eyebrow reveal">HOW IT WORKS</p>
+          <h2 class="section-title reveal">접수만 하면, 나머지는 타임라인이</h2>
+
+          <!-- 단계 번호(01, 02…)는 CSS가 자동으로 붙입니다 -->
+          <ol class="steps">
+            <li class="step reveal">
+              <h3>사고차량 접수</h3>
+              <p>차량번호, 차종, 연락처를 입력합니다.</p>
+            </li>
+            <li class="step reveal">
+              <h3>보험 확인</h3>
+              <p>상대방 보험사와 사고 접수번호를 확인합니다.</p>
+            </li>
+            <li class="step reveal">
+              <h3>운전면허 확인</h3>
+              <p>대차 차량 이용을 위해 운전면허를 확인합니다.</p>
+            </li>
+            <li class="step reveal">
+              <h3>실시간 타임라인</h3>
+              <p>탁송, 입고, 견적, 수리, 인도까지 모든 진행이 한 화면에 쌓입니다.</p>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- ═══════════════ 5. 출시 예정 ═══════════════
+           링크는 src/config/company.js 의 app 에서 설정 → 채우면 '출시 예정'이 사라지고 바로 연결됨 -->
+      <section id="launch" class="section">
+        <div class="container">
+          <div class="launch reveal">
+            <span class="launch-badge">COMING SOON</span>
+            <h2 class="section-title">차바다, 곧 출시됩니다</h2>
+            <p class="section-desc">앱과 웹에서 곧 만나보실 수 있습니다.</p>
+            <div class="store-buttons">
+              <a class="btn" data-store="ios">App Store</a>
+              <a class="btn" data-store="android">Google Play</a>
+              <a class="btn" data-store="web">웹 버전</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- 공통 푸터 (src/layout/footer.js) -->
+    <div data-site-footer></div>
+
+    <script type="module" src="/src/pages/chabada.js"></script>
+  </body>
+</html>

@@ -1,0 +1,80 @@
+/* 첫 화면 (3D 배경 + 메인 문구) */
+.hero {
+  position: relative;
+  /* 3D 뒤에 깔리는 은은한 파랑 · 빨강 빛 */
+  background:
+    radial-gradient(ellipse 50% 60% at 78% 40%, color-mix(in srgb, var(--color-primary) 22%, transparent), transparent 70%),
+    radial-gradient(ellipse 35% 45% at 92% 75%, color-mix(in srgb, var(--color-accent) 14%, transparent), transparent 70%);
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* Three.js 가 그려지는 캔버스 (src/three/heroScene.js) */
+.hero-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* 글자가 3D 위에서 잘 읽히도록 아래쪽을 살짝 어둡게 */
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 60%, var(--color-bg));
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  pointer-events: none; /* 3D 마우스 반응이 글자 위에서도 동작하도록 */
+}
+
+/* 링크 · 버튼은 다시 클릭 가능하게 (위에서 글자 영역 전체의 클릭을 꺼뒀기 때문) */
+.hero-content a,
+.hero-content button {
+  pointer-events: auto;
+}
+
+.hero-title {
+  font-size: clamp(36px, 6.5vw, 76px);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.03em;
+}
+
+.hero-desc {
+  margin-top: 24px;
+  font-size: clamp(16px, 2vw, 20px);
+  color: var(--color-text-muted);
+  max-width: 560px;
+}
+
+.hero-actions {
+  margin-top: 40px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+/* 차바다 페이지 첫 화면 (3D 없이 문구만) — chabada/index.html */
+.hero--service {
+  min-height: 80vh;
+  min-height: 80svh;
+  background:
+    radial-gradient(ellipse 55% 60% at 80% 30%, color-mix(in srgb, var(--color-primary) 20%, transparent), transparent 70%),
+    radial-gradient(ellipse 40% 45% at 95% 80%, color-mix(in srgb, var(--color-accent) 12%, transparent), transparent 70%);
+}
+
+/* 좁은 화면에선 3D 가 글자 바로 뒤에 겹치므로 살짝 흐리게 */
+@media (max-width: 900px) {
+  .hero-canvas {
+    opacity: 0.45;
+  }
+}

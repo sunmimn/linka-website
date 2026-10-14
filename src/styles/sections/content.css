@@ -1,0 +1,179 @@
+/* 공통 카드 + 차바다 페이지 섹션들: 비교(#compare) / 이용 방법(#flow) / 출시 예정(#launch)
+   (.about 레이아웃은 메인 페이지에서도 사용) */
+
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 32px 28px;
+}
+
+/* ── 기존 방식 vs 차바다 (#compare) ── */
+.compare {
+  margin-top: 56px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.compare-label {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--color-text-muted);
+  margin-bottom: 20px;
+}
+
+.compare .card--ours {
+  border-color: var(--color-primary);
+}
+
+.compare .card--ours .compare-label {
+  color: var(--color-primary-text);
+}
+
+.compare-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 12px;
+}
+
+.compare-list li {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.compare-list li:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+.compare-list span {
+  color: var(--color-text-muted);
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+/* ── 이용 방법 (#flow) ── */
+.steps {
+  margin-top: 56px;
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  counter-reset: step;
+}
+
+.step {
+  counter-increment: step;
+  position: relative;
+  padding-top: 56px;
+}
+
+.step::before {
+  content: '0' counter(step);
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--color-accent-text);
+}
+
+.step h3 {
+  font-size: 19px;
+  margin-bottom: 8px;
+}
+
+.step p {
+  color: var(--color-text-muted);
+  font-size: 15px;
+}
+
+/* ── 회사 소개 (#about) ── */
+.about {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+
+.about-body p + p {
+  margin-top: 16px;
+}
+
+.about-body p {
+  color: var(--color-text-muted);
+  font-size: 17px;
+}
+
+/* ── 출시 예정 (#launch) ── */
+.launch {
+  text-align: center;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: calc(var(--radius) * 2);
+  padding: 80px 24px;
+}
+
+.launch .section-desc {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.launch-badge {
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--color-accent);
+  color: var(--color-accent-text);
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.store-buttons {
+  margin-top: 32px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+/* 링크가 아직 없는 버튼 (components/storeButtons.js 가 붙임) */
+.store-buttons .is-disabled {
+  opacity: 0.55;
+  cursor: default;
+}
+
+.store-buttons .is-disabled:hover {
+  transform: none;
+}
+
+.store-soon {
+  font-size: 12px;
+  font-weight: 500;
+  opacity: 0.8;
+}
+
+@media (max-width: 900px) {
+  .compare,
+  .about {
+    grid-template-columns: 1fr;
+  }
+  .steps {
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 40px;
+  }
+}
+
+@media (max-width: 520px) {
+  .steps {
+    grid-template-columns: 1fr;
+  }
+}
