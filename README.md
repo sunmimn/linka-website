@@ -34,7 +34,7 @@ npm run build    # dist/ 에 배포용 파일 생성
 | 제휴 문의 연락처 (이메일 · 전화 · 메일 양식) | `src/config/company.js` 의 `partnership` |
 | 제휴 문의 팝업 안내 문구 · 버튼 구성 | `src/content/partnership.js` |
 | 위쪽 메뉴 항목 | `src/layout/header.js` 의 `NAV` |
-| 푸터 항목 순서 · 약관 버튼 | `src/layout/footer.js` 의 `FIELDS`, `LEGAL_LINKS` |
+| 푸터 항목 순서 · 약관 버튼 | `src/layout/footer.js` 의 `LINES`, `LEGAL_LINKS` |
 | 대표 한마디 (팀 소개 위 인용문) | `src/content/company/founder.js` |
 | 로드맵 (앞으로의 목표) | `src/content/company/roadmap.js` |
 | 연혁 (지금은 숨김 · 로드맵으로 대체) | `src/content/company/history.js` |
@@ -106,25 +106,45 @@ src/
 - **로드맵 → 연혁으로 전환** (실적이 쌓이면): `src/content/company/history.js` 채우기 → `index.html` 에서 `5. 로드맵` 섹션 삭제 → 바로 아래 `(보관) 연혁` 블록의 첫 줄 · 마지막 줄(주석 열고 닫는 줄)만 삭제.
 - **스크롤 등장 효과**: 아무 요소에 `class="reveal"` 추가.
 
-## 확정 대기 항목 (임시값으로 채워둔 것)
+## 결정되면 바꿀 곳 (변경 가이드)
 
-약관 · 처리방침에서 추천값으로 채워둔 곳은 HTML 주석 `[임시값]` 으로 표시되어 있습니다.
-`grep -n "임시값" src/content/legal/*.html` 로 위치를 찾을 수 있습니다.
+수정 → `main` 에 push(또는 GitHub 웹에서 파일 수정 후 Commit) → 1~2분 뒤 www.linkamobility.com 에 자동 반영.
+약관 · 처리방침에서 추천값으로 채워둔 곳은 HTML 주석 `[임시값]` 으로 표시 → `grep -n "임시값" src/content/legal/*.html`
 
-| 항목 | 현재 값 | 결정할 사람 | 파일 |
-| --- | --- | --- | --- |
-| 시행일 | 차바다 서비스 정식 출시일 | 팀 (출시일) | terms · privacy |
-| 가입 가능 나이 | 만 19세 이상 | 대표님 | terms 제5조 |
-| 취소 수수료 | 출발 전 무료 / 출발 후 탁송비 부담 | 대표님 | terms 제12조 |
-| 포인트 | 유효기간 1년 · 현금 환급 불가 | 대표님 | terms 제13조 |
-| 제휴사 정보 보관 기간 | 수리 · 대여 완료 후 6개월 | 대표님 | privacy 5항 |
-| 개인정보 보호담당자 | 없음 (책임자만) | 대표님 | privacy 12항 |
-| 분석 도구 | Google Firebase Analytics | 현서님 | privacy 6항 |
-| 직속 차량(회사 직접 대여) 조항 | 없음 (중개 구조만) | 대여사업 등록 후 | terms 제9조 |
-| 위치기반서비스 이용약관 | 없음 | 위치기반서비스사업 신고 후 | 새 파일 + 푸터 |
-| 보험사 제3자 제공 | 제공 안 함 | 보험사 제휴 시 | privacy 5항 |
-| 맞춤형 광고(행태정보) | 기재 안 함 | 현서님 | privacy 2 · 11항 |
-| 푸터 이메일 | hskoo@linkamobility.com | 대표님 (contact@ 생성 시) | config/company.js |
+### 대표님 결정 사항
+| 결정되면 | 바꿀 파일 | 바꿀 곳 |
+| --- | --- | --- |
+| 가입 가능 나이 (현재 만 19세) | `src/content/legal/terms.html` | 제5조 2항 |
+| 취소 수수료 기준 (현재 출발 전 무료 / 출발 후 탁송비) | `src/content/legal/terms.html` | 제12조 2항 |
+| 포인트 유효기간 · 환급 (현재 1년 · 환급 불가) | `src/content/legal/terms.html` | 제13조 2 · 3항 |
+| 제휴사 정보 보관 기간 (현재 6개월) | `src/content/legal/privacy.html` | 5. 제3자 제공 표의 "보유 기간" 칸 |
+| 개인정보 보호담당자 지정 | `src/content/legal/privacy.html` | 12. 보호책임자 목록에 `<li>` 한 줄 추가 (주석 위치) |
+| 푸터 이메일 변경 (현재 hskoo@) | `src/config/company.js` | `email` |
+| 제휴 문의 연락처 변경 | `src/config/company.js` | `partnership` |
+
+### 현서님 확인 사항
+| 결정되면 | 바꿀 파일 | 바꿀 곳 |
+| --- | --- | --- |
+| 분석 도구 이름 (현재 Firebase Analytics) | `src/content/legal/privacy.html` | 6. 처리 위탁 표 · 7. 국외 이전 |
+| 맞춤형 광고를 하는 경우 | `src/content/legal/privacy.html` | 2. 수집 항목에 "행태정보" 추가 · 11. 거부 방법 보강 |
+| KCB CI/DI 를 저장하지 않는 경우 | `src/content/legal/privacy.html` | 2. 수집 항목 "회원 가입 · 본인인증" 줄에서 CI · DI 삭제 |
+| 문자 · 알림톡 업체를 쓰게 되는 경우 | `src/content/legal/privacy.html` | 6. 처리 위탁 표에 업체 추가 |
+| 네이버 eKYC 도입 시 | `src/content/legal/privacy.html` | 6. 처리 위탁 표에 "네이버클라우드 — 운전면허 진위 확인" 추가 |
+
+### 일정 · 사업 상황에 따라
+| 상황 | 바꿀 파일 | 할 일 |
+| --- | --- | --- |
+| 출시일 확정 | `terms.html` · `privacy.html` | 상단 "시행일"과 terms 부칙 · privacy 14항의 "서비스 정식 출시일"을 날짜로 |
+| 앱 출시 (스토어 링크 생김) | `src/config/company.js` | `app.appStoreUrl` · `playStoreUrl` · `webUrl` 입력 → '출시 예정' 자동 해제 |
+| 위치기반서비스사업 신고 (출시 후 1개월 내) | `src/content/legal/` · `src/layout/footer.js` | `location.html` 새로 작성 → `legal/index.js` 등록 → 푸터 `LEGAL_LINKS` 에 추가 |
+| 직속 차량 직접 대여 시작 (자동차대여사업 등록 후) | `src/content/legal/terms.html` | 제9조 주석 위치에 "회사 직접 대여 시 책임 · 보험 · 대여 조건" 항 추가 |
+| 보험사 제휴 체결 | `src/content/legal/privacy.html` | 5. 제3자 제공 표에 보험사 추가 → **7일 전 공지 · 회원 동의 후** 정보 전달 시작 |
+| MOU 체결 공개 (공업사 · 렌터카) | `src/content/company/partners.js` | 회사명 · 분류 · 로고 입력 → 파트너 섹션 자동 표시 |
+| 링카모빌리티 명의 사업자 등록 | `src/config/company.js` · 약관 2종 | `operator` 를 `name` 과 같게 + 사업자 정보 교체, 약관 회사명 · 보호책임자 변경, 통신판매업 신고 새로 |
+| 회사 설립일 넣기 | `src/config/company.js` | `founded` |
+| 실적이 쌓여 연혁으로 전환 | `history.js` · `index.html` | 아래 "자주 하는 작업"의 로드맵 → 연혁 전환 참고 |
+| 호스팅 이전 (GitHub 외) | `src/config/company.js` | `hosting` |
+| 출시 직전 | 약관 2종 | 법률 검토 반영 |
 
 > 출시 후(회원이 생긴 뒤)에는 약관 변경 시 7일 전(불리한 변경은 30일 전) 공지 의무가 있습니다.
 
